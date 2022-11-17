@@ -14,6 +14,7 @@ import {
   useBreakpointValue,
   Heading,
   Stack,
+  Text,
   chakra,
 } from '@chakra-ui/react';
 import { useLongPress } from 'use-long-press';
@@ -33,7 +34,11 @@ import {
   RiLinkedinBoxFill,
   RiMailOpenLine,
 } from 'react-icons/ri';
-import { AiFillThunderbolt, AiFillGithub } from 'react-icons/ai';
+import {
+  AiFillThunderbolt,
+  AiFillGithub,
+  AiFillCaretDown,
+} from 'react-icons/ai';
 import {
   AnimateChild,
   AnimateParentWhenVisible,
@@ -220,7 +225,15 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
         <Outlet context={company} />
       </Box>
       <Box h={6}>
-        <ShareStoryButton slide={currentSlide} companyName={company.name} />
+        <Stack alignItems='center'>
+          <ShareStoryButton slide={currentSlide} companyName={company.name} />
+          <Stack direction='row' alignItems='center'>
+            <Text color='gray.300'>
+              <AiFillCaretDown />
+            </Text>
+            <Text color='gray.300'>Scroll down for TLDR</Text>
+          </Stack>
+        </Stack>
       </Box>
     </Box>
   );
@@ -246,9 +259,12 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
             Meta (Facebook), Shopify, and RBC.
           </ChildText>
           <ChildText color='gray.200'>
-            Coming from a background in Film Studies, I combine Design,
-            Engineering, and Business to build delightful products that solve
-            challenging problems - let's start the conversation!
+            Coming from a background in Film Studies, I combine{' '}
+            <chakra.span fontWeight='bold'>
+              Design, Engineering, and Business
+            </chakra.span>{' '}
+            to build delightful products that solve challenging problems - let's
+            start the conversation!
           </ChildText>
           <Stack pt={4}>
             <AnimateChild>

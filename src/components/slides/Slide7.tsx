@@ -32,7 +32,8 @@ export const Slide7 = () => {
             <ChildText color='gray.700'>
               As a hacker at heart, I’m not afraid to get my hands dirty and
               work closely with engineering teams to get{' '}
-              <chakra.span fontWeight='bold'>ship</chakra.span> done
+              <chakra.span fontWeight='bold'>ship</chakra.span> done - like
+              building this website!
             </ChildText>
           </Stack>
         </Center>

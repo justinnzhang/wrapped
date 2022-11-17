@@ -25,7 +25,7 @@ export const ProgressBar = ({ numOfSlides, currSlide, progress }: Props) => {
       position='absolute'
       left={0}
       top={2}
-      zIndex={9999}
+      zIndex={999}
       id='story-progress-bar'
     >
       <Flex justifyContent='space-evenly' gap='0.25rem'>

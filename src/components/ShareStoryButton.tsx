@@ -19,6 +19,7 @@ export const ShareStoryButton = ({ companyName }: Props) => {
     <Button
       variant='ghost'
       width='full'
+      size='lg'
       colorScheme='whiteAlpha'
       leftIcon={<FiShare />}
       onClick={() => {
@@ -31,7 +32,6 @@ export const ShareStoryButton = ({ companyName }: Props) => {
           position: 'top',
         });
       }}
-      size='lg'
     >
       Share this story
     </Button>
