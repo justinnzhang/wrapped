@@ -34,7 +34,7 @@ import {
   RiMailOpenLine,
 } from 'react-icons/ri';
 
-const DEBUGGING_MODE = true;
+const DEBUGGING_MODE = false;
 const DEFAULT_COMPANY = {
   name: 'Your Company',
   color: 'purple.700',

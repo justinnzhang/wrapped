@@ -6,7 +6,6 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
-import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { customTheme } from './theme';
 import { StoryLayout } from './layouts';
 import {
@@ -47,7 +46,7 @@ export const App = () => {
       <>
         <Route
           path='/'
-          element={<StoryLayout numOfSlides={SLIDE_ROUTES.length} />}
+          element={<StoryLayout numOfSlides={SLIDE_ROUTES.length - 1} />}
         >
           {SLIDE_ROUTES.map((route) => (
             <Route path={route.path} element={route.element} key={route.path} />
