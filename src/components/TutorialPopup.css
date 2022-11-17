@@ -1,0 +1,3 @@
+.safe-padding {
+  padding-bottom: calc(1em + env(safe-area-inset-bottom));
+}
