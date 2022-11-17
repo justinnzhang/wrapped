@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import {
   Outlet,
   useSearchParams,
@@ -13,8 +13,8 @@ import {
   Center,
   useBreakpointValue,
   Heading,
-  Text,
   Stack,
+  chakra,
 } from '@chakra-ui/react';
 import { useLongPress } from 'use-long-press';
 
@@ -33,9 +33,15 @@ import {
   RiLinkedinBoxFill,
   RiMailOpenLine,
 } from 'react-icons/ri';
+import { AiFillThunderbolt, AiFillGithub } from 'react-icons/ai';
+import {
+  AnimateChild,
+  AnimateParentWhenVisible,
+  ChildText,
+} from '../animation';
 
 const DEBUGGING_MODE = false;
-const DEFAULT_COMPANY = {
+const DEFAULT_COMPANY: CompanyCustom = {
   name: 'Your Company',
   color: 'purple.700',
 };
@@ -57,7 +63,9 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
   const [searchParams] = useSearchParams();
   const companyName: string = searchParams.get('hi') || '';
 
-  const company = getCompany() || DEFAULT_COMPANY;
+  const company = getCompany();
+
+  const scrollRef = useRef(null);
 
   const isLargeScreen = useBreakpointValue(
     { base: false, md: true },
@@ -102,9 +110,22 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
   );
 
   function getCompany() {
-    return COMPANIES_LIST.find(
+    const company = COMPANIES_LIST.find(
       (c) => c.name.toLowerCase() === companyName.toLowerCase()
     );
+
+    if (company) return company;
+
+    if (!company && companyName.length) {
+      const defaultCompany: CompanyCustom = {
+        name: companyName,
+        color: 'purple.700',
+      };
+
+      return defaultCompany;
+    }
+
+    return DEFAULT_COMPANY;
   }
 
   function generateSlideUrl(slide: number, company: string) {
@@ -195,66 +216,103 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
       </Box>
       <Box h={4}>
         <ShareStoryButton slide={currentSlide} companyName={company.name} />
-        <Stack p={4} bg='gray.900'>
-          <Heading color='white'>TLDR</Heading>
-          <Text color='gray.300'>
-            I'm a CS + Business student graduating April 2023, actively seeking
-            New Grad Product Management roles. Previously, I've worked in
-            Product & SWE at companies such as Meta (Facebook), Shopify, and
-            RBC.
-          </Text>
-          <Text color='gray.300'>
-            Coming from a background in Film Studies, I combine Design,
-            Engineering, and Business to build delightful products that solve
-            challenging problems.
-          </Text>
-          <Stack pt={4}>
-            <Button
-              width='full'
-              size='md'
-              as='a'
-              href={constants.PUBLIC_RESUME_LINK}
-              target='_blank'
-              rel='noreferrer'
-              leftIcon={<RiFilePaperLine />}
-            >
-              Resume
-            </Button>
-            <Button
-              width='full'
-              as='a'
-              href={constants.LINKEDIN_LINK}
-              target='_blank'
-              rel='noreferrer'
-              colorScheme='linkedin'
-              leftIcon={<RiLinkedinBoxFill />}
-            >
-              LinkedIn
-            </Button>
-            <Button
-              width='full'
-              as='a'
-              href={`mailto:${constants.EMAIL}`}
-              target='_blank'
-              rel='noreferrer'
-              leftIcon={<RiMailOpenLine />}
-            >
-              Email
-            </Button>
-          </Stack>
-        </Stack>
       </Box>
     </Box>
   );
 
   const instructionsPopupMarkup = isLargeScreen && <InstructionsPopup />;
 
+  const tldrMarkup = (
+    <Box mt={4} pl={4} pr={4} pb={8} ref={scrollRef}>
+      <AnimateParentWhenVisible scrollRef={scrollRef}>
+        <Stack>
+          <Stack direction='row' alignItems='center'>
+            <Heading color='white'>
+              <AiFillThunderbolt />
+            </Heading>
+            <Heading color='white'>TLDR</Heading>
+          </Stack>
+          <ChildText color='gray.300'>
+            I'm a CS + Business student graduating April 2023, seeking{' '}
+            <chakra.span fontWeight='bold'>
+              New Grad Product Management
+            </chakra.span>{' '}
+            roles. Previously, I've worked in Product & SWE at companies such as
+            Meta (Facebook), Shopify, and RBC.
+          </ChildText>
+          <ChildText color='gray.300'>
+            Coming from a background in Film Studies, I combine Design,
+            Engineering, and Business to build delightful products that solve
+            challenging problems - let's start the conversation!
+          </ChildText>
+          <Stack pt={4}>
+            <AnimateChild>
+              <Button
+                width='full'
+                size='md'
+                as='a'
+                href={company?.resume || constants.PUBLIC_RESUME_LINK}
+                target='_blank'
+                rel='noreferrer'
+                leftIcon={<RiFilePaperLine />}
+              >
+                {company?.resume ? 'Themed ' : ''}Resume
+              </Button>
+            </AnimateChild>
+            <AnimateChild>
+              <Button
+                width='full'
+                as='a'
+                href={constants.LINKEDIN_LINK}
+                target='_blank'
+                rel='noreferrer'
+                colorScheme='linkedin'
+                leftIcon={<RiLinkedinBoxFill />}
+              >
+                LinkedIn
+              </Button>
+            </AnimateChild>
+            <AnimateChild>
+              <Button
+                width='full'
+                as='a'
+                href={`mailto:${constants.EMAIL}`}
+                target='_blank'
+                rel='noreferrer'
+                leftIcon={<RiMailOpenLine />}
+              >
+                Email
+              </Button>
+            </AnimateChild>
+            <AnimateChild>
+              <Button
+                width='full'
+                as='a'
+                href={`mailto:${constants.EMAIL}`}
+                target='_blank'
+                rel='noreferrer'
+                leftIcon={<AiFillGithub />}
+                variant='ghost'
+                colorScheme='whiteAlpha'
+              >
+                Code for this site
+              </Button>
+            </AnimateChild>
+          </Stack>
+        </Stack>
+      </AnimateParentWhenVisible>
+    </Box>
+  );
+
   return (
-    <Box h='100%' w='100%' bg='gray.900'>
-      <Container maxW='28rem' h='100vh' p={0} bg='gray.900'>
-        <Center h='100%' w='100%'>
-          {storyMarkup}
-        </Center>
+    <Box bgGradient='linear(to-b, gray.900, #08024B)' h='100%' w='100%'>
+      <Container maxW='28rem' p={0}>
+        <Container maxW='28rem' h='100vh' p={0}>
+          <Center h='100%' w='100%' flexDirection='column'>
+            {storyMarkup}
+          </Center>
+        </Container>
+        {tldrMarkup}
       </Container>
       {instructionsPopupMarkup}
     </Box>

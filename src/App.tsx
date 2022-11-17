@@ -22,6 +22,8 @@ import {
   Slide10,
   Slide11,
 } from './components/slides';
+import { NotFoundPage } from './pages';
+
 import './global.css';
 
 const SLIDE_ROUTES = [
@@ -52,6 +54,7 @@ export const App = () => {
             <Route path={route.path} element={route.element} key={route.path} />
           ))}
         </Route>
+        <Route path='*' element={<NotFoundPage />} />
       </>
     )
   );

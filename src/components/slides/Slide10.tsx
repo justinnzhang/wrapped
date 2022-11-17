@@ -29,8 +29,9 @@ export const Slide10 = () => {
               community
             </ChildText>
             <ChildText color='white'>
-              I'm leading the campus-side of a free Product Bootcamp hosted by
-              alumni at companies such as Adobe, Microsoft, Patreon, and more -{' '}
+              Currently, I'm leading the campus-side of a free Product Bootcamp
+              hosted by alumni at companies such as Adobe, Microsoft, Patreon,
+              and more -{' '}
               <chakra.span fontWeight='bold' color={constants.BUSINESS_COLOR}>
                 one that I learned much from!
               </chakra.span>

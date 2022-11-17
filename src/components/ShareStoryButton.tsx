@@ -6,12 +6,12 @@ interface Props {
   companyName: string;
 }
 
-export const ShareStoryButton = ({ slide, companyName }: Props) => {
+export const ShareStoryButton = ({ companyName }: Props) => {
   const toast = useToast();
 
-  const { onCopy, hasCopied } = useClipboard(
-    `https://wrapped.justinzha.ng/s/${slide}${
-      companyName ? `?hi=${companyName}` : ''
+  const { onCopy } = useClipboard(
+    `https://wrapped.justinzha.ng/${
+      companyName !== 'Your Company' ? `?hi=${companyName}` : ''
     }`
   );
 
@@ -24,10 +24,11 @@ export const ShareStoryButton = ({ slide, companyName }: Props) => {
       onClick={() => {
         onCopy();
         toast({
-          title: 'Copied to clipboard!',
+          title: 'Link copied to clipboard!',
           status: 'success',
           duration: 8000,
           isClosable: true,
+          position: 'top',
         });
       }}
       size='lg'

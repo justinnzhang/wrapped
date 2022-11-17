@@ -37,7 +37,7 @@ export const Slide9 = () => {
             </ChildText>
             <ChildText color='gray.100'>
               Combining business school with entrepreneurial experience - I’ll
-              bring my user empathy, strategy learnings, and understanding of
+              bring my user empathy, strategic learnings, and understanding of
               how businesses thrive
             </ChildText>
           </Stack>

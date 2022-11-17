@@ -9,4 +9,5 @@ export const constants = {
     'https://doixzan7hf4ti.cloudfront.net/resumes/JustinZhangResume2022.pdf',
   EMAIL: 'justinzhangzll@gmail.com',
   LINKEDIN_LINK: 'https://linkedin.com/in/justinzhang000',
+  CLOUDFRONT_LINK: 'https://doixzan7hf4ti.cloudfront.net',
 };
