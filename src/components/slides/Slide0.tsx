@@ -33,17 +33,17 @@ export const Slide0 = () => {
               </AnimateChild>
               <Stack spacing={4}>
                 <AnimateChild>
-                  <Heading color='blue.50' size='2xl'>
+                  <Heading color='white' size='2xl'>
                     {content['slide0'].title}
                   </Heading>
                 </AnimateChild>
                 <AnimateChild>
-                  <Text color='gray.300' fontSize='lg'>
+                  <Text color='gray.200' fontSize='lg'>
                     {content['slide0'].text}
                   </Text>
                 </AnimateChild>
                 <AnimateChild>
-                  <Text color='gray.500' fontSize='sm'>
+                  <Text color='gray.200' fontSize='sm'>
                     TLDR below
                   </Text>
                 </AnimateChild>

@@ -22,7 +22,9 @@ export const Slide3 = () => {
               <Heading size='2xl'>Going beyond the resume...</Heading>
             </AnimateChild>
             <AnimateChild>
-              <Text color='gray.700'>There's more to the story</Text>
+              <Text color='gray.700' fontSize='lg'>
+                There's more to the story
+              </Text>
             </AnimateChild>
           </Stack>
         </Center>

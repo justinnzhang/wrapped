@@ -76,6 +76,11 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
     if (isPaused) return;
 
     if (progress >= 100) {
+      if (currentSlide === numOfSlides - 1) {
+        setIsPaused(true);
+        return;
+      }
+
       setProgress(0);
       getNextSlide();
     }
@@ -205,7 +210,7 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
         overflow='hidden'
         id='story-wrapper'
         className='unselectable'
-        h='calc(100% - 8rem)'
+        h='calc(100% - 6rem)'
         w='100%'
         {...bind()}
       >
@@ -214,7 +219,7 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
         {navigationZoneMarkup}
         <Outlet context={company} />
       </Box>
-      <Box h={4}>
+      <Box h={6}>
         <ShareStoryButton slide={currentSlide} companyName={company.name} />
       </Box>
     </Box>
@@ -232,7 +237,7 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
             </Heading>
             <Heading color='white'>TLDR</Heading>
           </Stack>
-          <ChildText color='gray.300'>
+          <ChildText color='gray.200'>
             I'm a CS + Business student graduating April 2023, seeking{' '}
             <chakra.span fontWeight='bold'>
               New Grad Product Management
@@ -240,7 +245,7 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
             roles. Previously, I've worked in Product & SWE at companies such as
             Meta (Facebook), Shopify, and RBC.
           </ChildText>
-          <ChildText color='gray.300'>
+          <ChildText color='gray.200'>
             Coming from a background in Film Studies, I combine Design,
             Engineering, and Business to build delightful products that solve
             challenging problems - let's start the conversation!

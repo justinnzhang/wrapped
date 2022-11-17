@@ -26,7 +26,7 @@ export const Slide2 = () => {
             </Stack>
             <Stack>
               <AnimateChild>
-                <Text fontSize='md'>
+                <Text fontSize='lg'>
                   I'm a{' '}
                   <chakra.span fontWeight='bold'>
                     Computer Science (BS)
@@ -37,7 +37,7 @@ export const Slide2 = () => {
                 </Text>
               </AnimateChild>
               <AnimateChild>
-                <Text fontSize='md'>
+                <Text fontSize='lg'>
                   I've completed 4 internships at companies such as{' '}
                   <chakra.span fontWeight='bold' color='facebook.500'>
                     Meta
@@ -53,7 +53,7 @@ export const Slide2 = () => {
                 </Text>
               </AnimateChild>
               <AnimateChild>
-                <Text fontSize='md'>
+                <Text fontSize='lg'>
                   On the side, I co-founded and launched a profitable software
                   startup,{' '}
                   <chakra.span fontWeight='bold' color='purple.800'>

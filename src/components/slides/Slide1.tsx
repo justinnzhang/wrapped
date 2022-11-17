@@ -52,7 +52,9 @@ export const Slide1 = () => {
             <Spacer />
             <Flex p={8}>
               <AnimateChild>
-                <Text fontWeight='bold'>Why? Continue to find out!</Text>
+                <Text fontWeight='bold' fontSize='md'>
+                  Why? Continue to find out!
+                </Text>
               </AnimateChild>
             </Flex>
           </Flex>
