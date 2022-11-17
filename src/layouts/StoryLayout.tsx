@@ -224,7 +224,7 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
         {navigationZoneMarkup}
         <Outlet context={company} />
       </Box>
-      <Box h={6}>
+      <Box h={6} pt={1}>
         <Stack alignItems='center'>
           <ShareStoryButton slide={currentSlide} companyName={company.name} />
           <Stack direction='row' alignItems='center'>
