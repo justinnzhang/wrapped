@@ -210,7 +210,7 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
         overflow='hidden'
         id='story-wrapper'
         className='unselectable'
-        h='calc(100% - 6rem)'
+        h='calc(100% - 7rem)'
         w='100%'
         {...bind()}
       >
