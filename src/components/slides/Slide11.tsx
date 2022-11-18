@@ -46,12 +46,12 @@ export const Slide11 = () => {
                   width='full'
                   size='md'
                   as='a'
-                  href={constants.PUBLIC_RESUME_LINK}
+                  href={company?.resume || constants.PUBLIC_RESUME_LINK}
                   target='_blank'
                   rel='noreferrer'
                   leftIcon={<RiFilePaperLine />}
                 >
-                  Resume
+                  {company?.resume ? 'Themed ' : ''}Resume
                 </Button>
               </AnimateChild>
               <AnimateChild>
