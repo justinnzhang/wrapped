@@ -10,4 +10,5 @@ export const constants = {
   EMAIL: 'justinzhangzll@gmail.com',
   LINKEDIN_LINK: 'https://linkedin.com/in/justinzhang000',
   CLOUDFRONT_LINK: 'https://doixzan7hf4ti.cloudfront.net',
+  GITHUB_REPO: 'https://github.com/justinnzhang/wrapped',
 };

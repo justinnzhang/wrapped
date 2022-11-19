@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router';
-import { Stack, Center, chakra, Button } from '@chakra-ui/react';
+import { Stack, Center, Button } from '@chakra-ui/react';
 
 import { SlideWrapper } from './SlideWrapper';
 import {

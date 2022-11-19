@@ -309,7 +309,7 @@ export const StoryLayout = ({ numOfSlides }: Props) => {
               <Button
                 width='full'
                 as='a'
-                href={`mailto:${constants.EMAIL}`}
+                href={constants.GITHUB_REPO}
                 target='_blank'
                 rel='noreferrer'
                 leftIcon={<AiFillGithub />}
